@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "title": "Testowe",
+      "author": "Anonymous",
+      "id": 57554
+    },
+    {
+      "title": "Nie wiem co, mała miałaś na myśli",
+      "author": "Anonymous2",
+      "id": 8593
+    },
+    {
+      "title": "Co tu dodac",
+      "author": "Anonymousx",
+      "id": 7922
+    },
+    {
+      "title": "pardhu",
+      "author": "Anonymous",
+      "id": 28755
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
