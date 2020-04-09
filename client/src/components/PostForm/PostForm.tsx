@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, FieldProps, Formik, FormikErrors, FormikProps } from 'formik';
+import { Field, FieldProps, Formik, FormikProps } from 'formik';
 import { object, string } from 'yup';
 import TextField from '../TextField/TextField';
 import { Post } from '../../reducers/postsReducer';
@@ -18,9 +18,13 @@ export type OwnPostFormProps = {
 export type OwnInnerFieldProps = FieldProps<FormValues> & FormValues;
 
 export const PostForm: React.FunctionComponent<OwnPostFormProps> = props => {
+    console.log(props);
     const enchanceId = (values: FormValues): Post => {
         return {
             ...values,
+            _id: props.currentPost
+                ? props.currentPost._id
+                : Math.round(Math.random() * 10e4),
             id: props.currentPost
                 ? props.currentPost.id
                 : Math.round(Math.random() * 10e4)

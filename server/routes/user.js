@@ -8,10 +8,11 @@ router.route('/').get((req, res) => {
 })
 
 router.route('/add').post((req, res) => {
-    const username = req.body.username;
-    const newUser = new User({ username });
+    const localized_name = req.body.localized_name;
+    const primary_attr = req.body.primary_attr;
+    const newUser = new User({ localized_name, primary_attr });
     newUser.save()
-        .then(() => res.json('Users Added!'))
+        .then(user => res.json(user))
         .catch(err => res.status(400).json('Error:' + err));
 });
 
@@ -33,7 +34,8 @@ router.route('/delete/:id').delete((req, res) => {
 router.route('/update/:id').post((req, res) => {
     User.findById(req.params.id)
         .then(user => {
-            user.username = req.body.username;
+            user.localized_name = req.body.localized_name;
+            user.primary_attr = req.body.primary_attr;
             user.save()
                 .then(() => res.json('User updated!'))
                 .catch(err => res.status(400).json('Error' + err))

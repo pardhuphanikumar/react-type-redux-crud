@@ -43,7 +43,12 @@ interface FetchPostsFail {
 export const fetchPosts = (): ThunkResult<void> => async dispatch => {
     handleFetchPosts(dispatch);
     try {
-        const response: AxiosResponse<Post[]> = await posts.get('/users');
+        const response: AxiosResponse<any> = await posts.get('/users');
+        // response.data.map((item: any) => {
+        //     item.id = item._id;
+        //     return item;
+        // })
+        console.log(response.data);
         handleFetchPostsSuccess(dispatch, response.data);
     } catch (e) {
         handleFetchPostsFail(dispatch);
@@ -85,7 +90,7 @@ interface FetchPostFail {
     type: PostsActionTypes.FETCH_POST_FAIL;
 }
 
-export const fetchPost = (id: number): ThunkResult<void> => async dispatch => {
+export const fetchPost = (id: string): ThunkResult<void> => async dispatch => {
     handleFetchPost(dispatch);
     try {
         const response: AxiosResponse<Post> = await posts.get(`/users/${id}`);
@@ -133,7 +138,7 @@ interface AddPostFail {
 export const addPost = (post: Post): ThunkResult<void> => async dispatch => {
     handleAddPost(dispatch);
     try {
-        const response: AxiosResponse<Post> = await posts.post(`/users`, post);
+        const response: AxiosResponse<Post> = await posts.post(`/users/add`, post);
         handleAddPostSuccess(dispatch, response.data);
     } catch (e) {
         handleAddPostFail(dispatch);
@@ -176,8 +181,9 @@ export const editPost = (
 ): ThunkResult<void> => async dispatch => {
     handleEditPost(dispatch);
     try {
-        const response: AxiosResponse<Post> = await posts.patch(
-            `/users/${editedPost.id}`,
+        console.log(editedPost);
+        const response: AxiosResponse<Post> = await posts.post(
+            `/users/update/${editedPost._id}`,
             editedPost
         );
         handleEditPostSuccess(dispatch, response.data);
@@ -210,7 +216,7 @@ interface DeletePost {
 
 interface DeletePostSuccess {
     type: PostsActionTypes.DELETE_POST_SUCCESS;
-    payload: number;
+    payload: string;
 }
 
 interface DeletePostFail {
@@ -218,11 +224,11 @@ interface DeletePostFail {
 }
 
 export const deletePost = (
-    deletedId: number
+    deletedId: string
 ): ThunkResult<void> => async dispatch => {
     dispatch({ type: PostsActionTypes.DELETE_POST });
     try {
-        await posts.delete(`/users/${deletedId}`);
+        await posts.delete(`/users/delete/${deletedId}`);
         dispatch({
             type: PostsActionTypes.DELETE_POST_SUCCESS,
             payload: deletedId

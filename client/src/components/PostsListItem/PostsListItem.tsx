@@ -12,7 +12,7 @@ const PostsListItem = ({ post }: PostListItemProps) => (
             <img src="https://picsum.photos/300/200/?random" alt="none" />
         </div>
         <div className="content">
-            <Link to={`/posts/${post.id}`} className="header">
+            <Link to={`/posts/${post._id}`} className="header">
                 User Name: {post.localized_name}
             </Link>
             <div className="meta">
@@ -24,13 +24,13 @@ const PostsListItem = ({ post }: PostListItemProps) => (
             <div className="extra">Skill: {post.primary_attr}</div>
             <div>
                 <Link
-                    to={'/posts/edit/' + post.id}
+                    to={'/posts/edit/' + post._id}
                     className="ui green basic button"
                 >
                     Edit
                 </Link>
                 <Link
-                    to={'/posts/delete/' + post.id}
+                    to={'/posts/delete/' + post._id}
                     className="ui red basic button"
                 >
                     Delete

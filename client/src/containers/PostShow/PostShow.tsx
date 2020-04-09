@@ -4,15 +4,16 @@ import { RootState } from '../../store';
 import { RouteComponentProps } from 'react-router';
 import { Post } from '../../reducers/postsReducer';
 import { fetchPost } from '../../actions/postsActions';
+import { string } from 'yup';
 
 interface PostShowProps extends RouteComponentProps<OwnPropsParams> {
     post: Post;
-    fetchPost: (id: number) => void;
+    fetchPost: (id: string) => void;
 }
 
 class PostShow extends Component<PostShowProps> {
     componentDidMount(): void {
-        this.props.fetchPost(Number(this.props.match.params.id));
+        this.props.fetchPost(this.props.match.params.id);
     }
 
     render() {
@@ -51,7 +52,7 @@ function mapStateToProps(
     ownProps: RouteComponentProps<OwnPropsParams>
 ) {
     return {
-        post: state.posts.items[Number(ownProps.match.params.id)]
+        post: state.posts.items[ownProps.match.params.id]
     };
 }
 

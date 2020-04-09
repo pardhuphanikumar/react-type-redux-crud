@@ -4,12 +4,13 @@ import { Reducer } from 'redux';
 
 export interface Post {
     id: number;
+    _id?: number;
     localized_name: string;
     primary_attr: string;
 }
 
 export interface Posts {
-    [id: number]: Post;
+    [id: string]: Post;
 }
 
 export interface PostsState {
@@ -52,7 +53,7 @@ export const postsReducer: Reducer<PostsState, PostsAction> = (
         case PostsActionTypes.FETCH_POSTS_SUCCESS:
             return {
                 ...state,
-                items: { ...state.items, ..._.mapKeys(action.payload, 'id') },
+                items: { ...state.items, ..._.mapKeys(action.payload, '_id') },
                 loading: false
             };
 

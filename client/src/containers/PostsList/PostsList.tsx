@@ -22,7 +22,7 @@ class PostsList extends Component<PostsListProps> {
             return null;
         }
         return posts.map((post: Post) => {
-            return <PostsListItem post={post} key={post.id} />;
+            return <PostsListItem post={post} />;
         });
     }
 

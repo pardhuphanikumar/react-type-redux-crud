@@ -9,13 +9,14 @@ import { RouteComponentProps } from 'react-router';
 
 interface PostEditProps extends RouteComponentProps<OwnPropsParams> {
     post: Post;
-    fetchPost: (id: number) => void;
+    fetchPost: (id: string) => void;
     editPost: (post: Post) => void;
 }
 
 class PostEdit extends Component<PostEditProps> {
     componentDidMount(): void {
-        this.props.fetchPost(Number(this.props.match.params.id));
+        console.log(this.props)
+        this.props.fetchPost(this.props.match.params.id);
     }
 
     render() {
@@ -41,7 +42,7 @@ function mapStateToProps(
     ownProps: RouteComponentProps<OwnPropsParams>
 ) {
     return {
-        post: state.posts.items[Number(ownProps.match.params.id)]
+        post: state.posts.items[ownProps.match.params.id]
     };
 }
 

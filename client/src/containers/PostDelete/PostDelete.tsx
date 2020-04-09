@@ -10,13 +10,13 @@ import history from '../../history';
 
 interface PostDeleteProps extends RouteComponentProps<OwnPropsParams> {
     post: Post;
-    fetchPost: (id: number) => void;
-    deletePost: (post: number) => void;
+    fetchPost: (id: string) => void;
+    deletePost: (post: string) => void;
 }
 
 class PostDelete extends React.Component<PostDeleteProps> {
     componentDidMount(): void {
-        this.props.fetchPost(Number(this.props.match.params.id));
+        this.props.fetchPost(this.props.match.params.id);
     }
 
     renderActions() {
@@ -24,7 +24,7 @@ class PostDelete extends React.Component<PostDeleteProps> {
         return (
             <React.Fragment>
                 <button
-                    onClick={() => this.props.deletePost(Number(id))}
+                    onClick={() => this.props.deletePost(id)}
                     className="ui button negative"
                 >
                     Delete
@@ -70,7 +70,7 @@ function mapStateToProps(
     ownProps: RouteComponentProps<OwnPropsParams>
 ) {
     return {
-        post: state.posts.items[Number(ownProps.match.params.id)]
+        post: state.posts.items[ownProps.match.params.id]
     };
 }
 
