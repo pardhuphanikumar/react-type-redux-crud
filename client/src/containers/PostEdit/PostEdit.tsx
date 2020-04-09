@@ -24,7 +24,7 @@ class PostEdit extends Component<PostEditProps> {
         }
         return (
             <PostForm
-                initialValues={_.pick(this.props.post, 'title', 'author')}
+                initialValues={_.pick(this.props.post, 'localized_name', 'primary_attr')}
                 onSubmit={this.props.editPost}
                 currentPost={this.props.post}
             />

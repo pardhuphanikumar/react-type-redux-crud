@@ -3,21 +3,21 @@ import { Field, FieldProps } from 'formik';
 import { OwnInnerFieldProps } from '../PostForm/PostForm';
 
 const TextField: React.FunctionComponent<OwnInnerFieldProps> = ({
-    title,
+    localized_name,
     field,
     form
 }) => {
     const className = `field ${
-        form.touched.title && form.errors.title ? 'error' : null
-    }`;
+        form.touched.localized_name && form.errors.localized_name ? 'error' : null
+        }`;
     return (
         <div className={className}>
-            <label htmlFor="title">Title</label>
-            <Field type="text" name="title" placeholder="Title"/>
+            <label htmlFor="localized_name">Title</label>
+            <Field type="text" name="localized_name" placeholder="Title" />
 
-            {form.touched.title && form.errors.title ? (
+            {form.touched.localized_name && form.errors.localized_name ? (
                 <div className="ui pointing red basic label">
-                    {form.errors.title}
+                    {form.errors.localized_name}
                 </div>
             ) : null}
         </div>

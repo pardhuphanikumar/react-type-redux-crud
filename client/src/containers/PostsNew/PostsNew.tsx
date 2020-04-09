@@ -9,8 +9,8 @@ export type OwnPostsNewProps = {
 };
 
 const initialValues: FormValues = {
-    title: '',
-    author: 'Anonymous'
+    localized_name: '',
+    primary_attr: 'Anonymous'
 };
 
 class PostsNew extends Component<OwnPostsNewProps> {

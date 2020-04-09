@@ -13,7 +13,7 @@ const PostsListItem = ({ post }: PostListItemProps) => (
         </div>
         <div className="content">
             <Link to={`/posts/${post.id}`} className="header">
-                User Name: {post.title}
+                User Name: {post.localized_name}
             </Link>
             <div className="meta">
                 <span>Surname</span>
@@ -21,7 +21,7 @@ const PostsListItem = ({ post }: PostListItemProps) => (
             <div className="description">
                 <p />
             </div>
-            <div className="extra">Skill: {post.author}</div>
+            <div className="extra">Skill: {post.primary_attr}</div>
             <div>
                 <Link
                     to={'/posts/edit/' + post.id}

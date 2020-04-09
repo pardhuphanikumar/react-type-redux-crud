@@ -5,8 +5,8 @@ import TextField from '../TextField/TextField';
 import { Post } from '../../reducers/postsReducer';
 
 export interface FormValues {
-    title: string;
-    author: string;
+    localized_name: string;
+    primary_attr: string;
 }
 
 export type OwnPostFormProps = {
@@ -36,7 +36,7 @@ export const PostForm: React.FunctionComponent<OwnPostFormProps> = props => {
                     props.onSubmit(enchanceId(values))
                 }
                 validationSchema={object().shape({
-                    title: string()
+                    localized_name: string()
                         .required('Entering your first name is required.')
                         .min(5, 'Minimum 5')
                 })}
@@ -46,16 +46,16 @@ export const PostForm: React.FunctionComponent<OwnPostFormProps> = props => {
                 }: FormikProps<FormValues>) => (
                         <form onSubmit={handleSubmit} className="ui form">
                             <Field
-                                name="title"
+                                name="localized_name"
                                 render={(innerProps: OwnInnerFieldProps) => (
-                                    <TextField {...innerProps} title="Title" />
+                                    <TextField {...innerProps} localized_name="Title" />
                                 )}
                             />
                             <div className="field">
-                                <label htmlFor="author">Author</label>
+                                <label htmlFor="primary_attr">Author</label>
                                 <Field
                                     type="text"
-                                    name="author"
+                                    name="primary_attr"
                                     placeholder="Author"
                                 />
                             </div>

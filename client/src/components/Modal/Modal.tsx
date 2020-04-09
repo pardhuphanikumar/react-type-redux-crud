@@ -11,7 +11,7 @@ export const Modal = (props: any): ReactPortal => {
                 onClick={e => e.stopPropagation()}
                 className="ui standard modal visible active"
             >
-                <div className="header">{props.title}</div>
+                <div className="header">{props.localized_name}</div>
                 <div className="content">{props.content}</div>
                 <div className="actions">{props.actions}</div>
             </div>

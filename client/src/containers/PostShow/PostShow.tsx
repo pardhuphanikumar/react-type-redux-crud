@@ -22,8 +22,8 @@ class PostShow extends Component<PostShowProps> {
         return (
             <div className="ui card">
                 <div className="content">
-                    <div className="header">{this.props.post.title}</div>
-                    <div className="meta">{this.props.post.author}</div>
+                    <div className="header">{this.props.post.localized_name}</div>
+                    <div className="meta">{this.props.post.primary_attr}</div>
                     <div className="description">
                         <p>
                             Cute dogs come in a variety of shapes and sizes.

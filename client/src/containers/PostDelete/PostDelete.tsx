@@ -42,7 +42,7 @@ class PostDelete extends React.Component<PostDeleteProps> {
         }
         return (
             <div>
-                Post with title <strong>"{this.props.post.title}"</strong> will
+                Post with localized_name <strong>"{this.props.post.localized_name}"</strong> will
                 be deleted.
                 <p>Are you sure?</p>
             </div>
@@ -52,7 +52,7 @@ class PostDelete extends React.Component<PostDeleteProps> {
     render() {
         return (
             <Modal
-                title="Delete Post"
+                localized_name="Delete Post"
                 content={this.renderContent()}
                 actions={this.renderActions()}
                 onDismiss={() => history.push('/')}

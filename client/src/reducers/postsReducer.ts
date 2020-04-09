@@ -4,8 +4,8 @@ import { Reducer } from 'redux';
 
 export interface Post {
     id: number;
-    title: string;
-    author: string;
+    localized_name: string;
+    primary_attr: string;
 }
 
 export interface Posts {
